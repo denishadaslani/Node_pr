@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jewellery Store | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fdf7f7;
+      color: #333;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #b07a5b; /* jewellery gold tone */
+    }
+
+    .logo span {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 0.95rem;
+      color: #555;
+      padding: 4px 10px;
+      border-radius: 999px;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      background-color: #f5e2d6;
+      color: #b07a5b;
+    }
+
+    /* active page: Home */
+    nav a.active {
+      background-color: #b07a5b;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* ---------- HERO SECTION ---------- */
+    .hero {
+      max-width: 1100px;
+      margin: 20px auto 40px;
+      padding: 24px 16px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero-text small {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: #b07a5b;
+    }
+
+    .hero-text h1 {
+      font-size: 2.4rem;
+      margin: 10px 0;
+      line-height: 1.2;
+      color: #222;
+    }
+
+    .hero-text h1 span {
+      color: #b07a5b;
+    }
+
+    .hero-text p {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.85rem;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border-radius: 20px;
+      border: 1px solid #ead1c0;
+      background-color: #fff;
+      color: #b07a5b;
+    }
+
+    .hero-image {
+      background: radial-gradient(circle at top, #ffe9da, #fdf7f7);
+      border-radius: 18px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    /* ---------- SECTION TITLE ---------- */
+    .section-wrapper {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 16px 10px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+      font-size: 1.4rem;
+      color: #222;
+      position: relative;
+    }
+
+    .section-header h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 50px;
+      height: 2px;
+      background-color: #b07a5b;
+    }
+
+    .section-header span {
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* ---------- JEWELLERY CARDS ---------- */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #f0dfd4;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+    }
+
+    .card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 10px 12px 12px;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #333;
+    }
+
+    .card-category {
+      font-size: 0.8rem;
+      color: #a07b5c;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .card-price {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #b07a5b;
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .card-link {
+      font-size: 0.82rem;
+      color: #b07a5b;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 2px;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background-color: #1b1b1b;
+      color: #ddd;
+      margin-top: 40px;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 14px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 20px;
+      font-size: 0.85rem;
+    }
+
+    .footer-brand h3 {
+      color: #f7f0ea;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand p {
+      color: #aaa;
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    .footer-heading {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #f5e3d4;
+    }
+
+    .footer-links a,
+    .footer-contact span {
+      display: block;
+      text-decoration: none;
+      color: #bbb;
+      font-size: 0.83rem;
+      margin-bottom: 4px;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      text-align: center;
+      padding: 8px 16px 12px;
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        AuraJewels
+        <span>fine jewellery</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="about">About</a></li>
+          <li><a href="collection">Collection</a></li>
+          <li><a href="contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero">
+    <div class="hero-text">
+      <small>New Collection 2025</small>
+      <h1>Elegant <span>Jewellery</span> for Every Special Moment</h1>
+      <p>
+        Discover handcrafted rings, necklaces and earrings designed to add a touch
+        of luxury to your everyday look and your grand celebrations.
+      </p>
+      <div class="hero-highlights">
+        <span class="badge">✔ 925 Sterling Silver</span>
+        <span class="badge">✔ 24K Gold Plated</span>
+        <span class="badge">✔ Minimal & Bridal Sets</span>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <!-- Jewellery themed placeholder image -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBPVTi7xHEAmRFo0LJjOpwdOZczQ5ZVi3VSvO5I8NNSK9iSrH-swBtKh6JGAUb-I4rjOU&usqp=CAU" alt="Jewellery collection banner" />
+    </div>
+  </section>
+
+  <!-- ========== FEATURED JEWELLERY SECTION ========== -->
+  <section class="section-wrapper">
+    <div class="section-header">
+      <h2>Featured Jewellery</h2>
+      <span>Explore a few highlights from our latest collection.</span>
+    </div>
+
+    <div class="card-grid">
+      <!-- CARD 1 -->
+      <article class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_nlcgaQOrDzx6RZ2glDzrlU4OWixhh3FU9HIv7IjsUQ&s" alt="Gold ring" />
+        <div class="card-body">
+          <div class="card-category">Ring</div>
+          <div class="card-title">Rose Gold Solitaire Ring</div>
+          <div class="card-price">₹8,999</div>
+          <p class="card-desc">
+            A timeless solitaire ring with a sparkling stone for everyday elegance.
+          </p>
+          <span class="card-link">View details</span>
+        </div>
+      </article>
+
+      <!-- CARD 2 -->
+      <article class="card">
+        <img src="https://manubhai.in/SocialMedia/post_artworks/DIBD02283.jpg" alt="Necklace" />
+        <div class="card-body">
+          <div class="card-category">Necklace</div>
+          <div class="card-title">Classic Diamond Necklace</div>
+          <div class="card-price">₹24,500</div>
+          <p class="card-desc">
+            Delicate diamond stones set in a graceful chain to light up your style.
+          </p>
+          <span class="card-link">View details</span>
+        </div>
+      </article>
+
+      <!-- CARD 3 -->
+      <article class="card">
+        <img src="https://m.media-amazon.com/images/I/61Uwu7b2BhL._AC_UF1000,1000_QL80_.jpg" alt="Earrings" />
+        <div class="card-body">
+          <div class="card-category">Earrings</div>
+          <div class="card-title">Pearl Drop Earrings</div>
+          <div class="card-price">₹5,499</div>
+          <p class="card-desc">
+            Minimal pearl drops that pair perfectly with both ethnic and western outfits.
+          </p>
+          <span class="card-link">View details</span>
+        </div>
+      </article>
+
+      <!-- CARD 4 -->
+      <article class="card">
+        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSeNYErh-yI-WjbIoKC_JWbQZ1hvbv_RR5BgNkGkIvdJIMRarYH9lggKH5ysjeyOronUFOGSDlJZYTopSGwukC60FpcvALo0ZadJ1p0LBYg" alt="Bracelet" />
+        <div class="card-body">
+          <div class="card-category">Bracelet</div>
+          <div class="card-title">Layered Gold Bracelet</div>
+          <div class="card-price">₹6,999</div>
+          <p class="card-desc">
+            A chic layered bracelet that adds a modern twist to your look.
+          </p>
+          <span class="card-link">View details</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>AuraJewels</h3>
+        <p>
+          Finely crafted jewellery designed with love, care and attention to detail.
+          Perfect for gifting and for your precious moments.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="about">About</a>
+          <a href="collection">Collection</a>
+          <a href="contact">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-heading">Contact</div>
+        <div class="footer-contact">
+          <span>Email: support@aurajewels.com</span>
+          <span>Phone: +91 98765 43210</span>
+          <span>Location: Surat, India</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 AuraJewels. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>

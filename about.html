@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Us | AuraJewels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fdf7f7;
+      color: #333;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #b07a5b;
+    }
+
+    .logo span {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 0.95rem;
+      color: #555;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    nav a:hover {
+      background-color: #f5e2d6;
+      color: #b07a5b;
+    }
+
+    nav a.active {
+      background-color: #b07a5b;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* ---------- ABOUT HERO ---------- */
+    .about-hero {
+      max-width: 1100px;
+      margin: 24px auto 40px;
+      padding: 30px 16px;
+      background: linear-gradient(to right, #fff6ef, #fdf7f7);
+      border-radius: 18px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .about-text h1 {
+      font-size: 2.2rem;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .about-text h1 span {
+      color: #b07a5b;
+    }
+
+    .about-text p {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    /* ---------- WHY CHOOSE US ---------- */
+    .section-wrapper {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 16px;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+      font-size: 1.5rem;
+      color: #222;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 50px;
+      height: 2px;
+      background-color: #b07a5b;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid #f0dfd4;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      color: #b07a5b;
+      margin-bottom: 6px;
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      color: #777;
+      line-height: 1.4;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background-color: #1b1b1b;
+      color: #ddd;
+      margin-top: 40px;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 14px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 20px;
+      font-size: 0.85rem;
+    }
+
+    .footer-brand h3 {
+      color: #f7f0ea;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand p {
+      color: #aaa;
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    .footer-heading {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #f5e3d4;
+    }
+
+    .footer-links a,
+    .footer-contact span {
+      display: block;
+      text-decoration: none;
+      color: #bbb;
+      font-size: 0.83rem;
+      margin-bottom: 4px;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      text-align: center;
+      padding: 8px 16px 12px;
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .about-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        AuraJewels
+        <span>fine jewellery</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="about" class="active">About</a></li>
+          <li><a href="collection">Collection</a></li>
+          <li><a href="contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== ABOUT HERO SECTION ========== -->
+  <section class="about-hero">
+    <div class="about-text">
+      <h1>About <span>AuraJewels</span></h1>
+      <p>
+        AuraJewels is a modern jewellery brand dedicated to creating elegant,
+        timeless designs that suit every occasion — from daily wear to weddings.
+      </p>
+      <p>
+        Every piece is crafted with precision, premium materials, and deep attention
+        to detail, ensuring both beauty and durability.
+      </p>
+    </div>
+
+    <div class="about-image">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/050/648/762/small/close-up-of-skilled-hands-meticulously-creating-unique-jewelry-pieces-at-a-workbench-using-various-tools-and-materials-to-achieve-exquisite-detail-and-craftsmanship-photo.jpeg" alt="Jewellery craftsmanship" />
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section class="section-wrapper">
+    <div class="section-header">
+      <h2>Why Choose Us</h2>
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <h3>Premium Quality</h3>
+        <p>Crafted using certified gold, silver and premium stones.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Elegant Designs</h3>
+        <p>Modern, minimal and bridal designs all in one place.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Perfect for Gifting</h3>
+        <p>Jewellery that makes every celebration memorable.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Trusted Brand</h3>
+        <p>Loved by thousands of happy customers across India.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>AuraJewels</h3>
+        <p>
+          Finely crafted jewellery designed with love, care and attention to detail.
+          Perfect for gifting and for your precious moments.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="about">About</a>
+          <a href="collection">Collection</a>
+          <a href="contact">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-heading">Contact</div>
+        <div class="footer-contact">
+          <span>Email: support@aurajewels.com</span>
+          <span>Phone: +91 98765 43210</span>
+          <span>Location: Surat, India</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 AuraJewels. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
