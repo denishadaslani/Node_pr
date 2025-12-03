@@ -5,23 +5,26 @@ const server = http.createServer(
     (req, res) => {
 
         let filepath = "";
-        
+
         switch (req.url) {
             case "/":
-                filepath = "../index.html";
+                filepath = "./index.html";
                 break;
+                
             case "/about":
-                filepath = "../about.html";
+                filepath = "./about.html";
                 break;
+
             case "/collection":
-                filepath = "../collection.html";
+                filepath = "./collection.html";
                 break;
+
             case "/contact":
-                filepath = "../contact.html";
+                filepath = "./contact.html";
                 break;
 
             default:
-                filepath = "../not-found.html";
+                filepath = "./not-found.html";
                 break;
         }
 
