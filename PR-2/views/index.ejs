@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do-list</title>
+</head>
+
+<style>
+    /* Global layout */
+    body {
+        font-family: "Arial", sans-serif;
+        background: #f0f2f5;
+        margin: 0;
+        padding: 30px 0;
+    }
+
+    p {
+        font-size: 24px;
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 15px;
+    }
+
+    /* Center content but keep it clean */
+    center {
+        width: 100%;
+    }
+
+    /* ---------- FORM CARD ---------- */
+    form {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 22px 24px;
+        width: 340px;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+        display: inline-block;
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Small color strip on left for style */
+    form::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 6px;
+        height: 100%;
+        background: #ffb74d;
+    }
+
+    form tr td {
+        display: block;
+        padding: 5px 0;
+        font-size: 14px;
+        color: #444;
+        font-weight: 500;
+    }
+
+    /* Inputs */
+    input[type="text"],
+    input[type="date"],
+    select {
+        width: 100%;
+        margin-top: 4px;
+        padding: 9px 10px;
+        border-radius: 6px;
+        border: 1px solid #cfd3dc;
+        font-size: 13px;
+        outline: none;
+        background: #fafbff;
+        box-sizing: border-box;
+        transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    select:focus {
+        border-color: #1976d2;
+        background: #ffffff;
+        box-shadow: 0 0 0 2px rgba(25,118,210,0.15);
+    }
+
+    /* Submit button */
+    input[type="submit"] {
+        margin-top: 12px;
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: none;
+        background: #1976d2;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+        transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    }
+
+    input[type="submit"]:hover {
+        background: #115293;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+        transform: translateY(-1px);
+    }
+
+    /* ---------- TABLE STYLING ---------- */
+    table {
+        margin-top: 35px;
+        width: 85%;
+        border-collapse: collapse;
+        background: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+    }
+
+    thead tr {
+        background: #1976d2;
+    }
+
+    th {
+        padding: 10px;
+        font-size: 14px;
+        color: #ffffff;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    td {
+        padding: 10px;
+        font-size: 13px;
+        text-align: center;
+        color: #333;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    tbody tr:nth-child(even) {
+        background: #f7f9fc;
+    }
+
+    tbody tr:hover {
+        background: #e9f2ff;
+    }
+
+    /* Make priority stand out slightly */
+    td:nth-child(4) {
+        font-weight: 600;
+    }
+
+    /* Buttons in Action column */
+    button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: none;
+        font-size: 12px;
+        cursor: pointer;
+        margin: 0 2px;
+        font-weight: 500;
+        transition: background 0.2s, transform 0.1s;
+    }
+
+    a:nth-child(1) button {
+        background: #e53935;
+        color: #ffffff;
+    }
+    a:nth-child(1) button:hover {
+        background: #b71c1c;
+        transform: translateY(-1px);
+    }
+
+    a:nth-child(2) button {
+        background: #43a047;
+        color: #ffffff;
+    }
+    a:nth-child(2) button:hover {
+        background: #2e7d32;
+        transform: translateY(-1px);
+    }
+</style>
+
+
+<body>
+    <p style="text-align: center;"> To do-list form</p>
+
+    <center>
+        <form action="add-task" method="post">
+            <tr>
+                <td>id:</td>
+                <td><input type="text" name="id" /></td>
+            </tr>
+            <br>
+            <br>
+            <tr>
+                <td>Task Title</td>
+                <td><input type="text" name="Title" /></td>
+            </tr>
+            <br>
+            <br>
+            <tr>
+                <td>Task Description</td>
+                <td><input type="text" name="Description" /></td>
+            </tr>
+            <br>
+            <br>
+            <tr>
+                <td>Task Priority</td>
+                <td>
+                    <select name="Priority">
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </td>
+            </tr>
+            <br>
+            <br>
+            <tr>
+                <td>Due Date</td>
+                <td><input type="date" name="DueDate" /></td>
+            </tr>
+            <br>
+            <br>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="submit"></td>
+            </tr>
+            <br>
+            <br>
+        </form>
+    </center>
+
+    <center>
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>ID:</th>
+                    <th>Title</th>
+                    <th>Decription</th>
+                    <th>Priority</th>
+                    <th>DueDate</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Task.forEach((task)=>{ %>
+                    <tr>
+                        <td>
+                            <%= task.id %>
+                        </td>
+                        <td>
+                            <%= task.Title %>
+                        </td>
+                        <td>
+                            <%= task.Description %>
+                        </td>
+                        <td>
+                            <%= task.Priority %>
+                        </td>
+                        <td>
+                            <%= task.DueDate %>
+                        </td>
+                         <td>
+                            <a href="/delete-task/<%= task.id %>"><button>Delete</button></a>
+                            <a href="/edit-task/<%= task.id %>"><button>Edit</button></a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </center>
+</body>
+
+</html>
