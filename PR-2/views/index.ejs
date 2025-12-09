@@ -191,26 +191,26 @@
         <form action="add-task" method="post">
             <tr>
                 <td>id:</td>
-                <td><input type="text" name="id" /></td>
+                <td><input type="text" name="id" required/></td>
             </tr>
             <br>
             <br>
             <tr>
                 <td>Task Title</td>
-                <td><input type="text" name="Title" /></td>
+                <td><input type="text" name="Title" required/></td>
             </tr>
             <br>
             <br>
             <tr>
                 <td>Task Description</td>
-                <td><input type="text" name="Description" /></td>
+                <td><input type="text" name="Description" required /></td>
             </tr>
             <br>
             <br>
             <tr>
                 <td>Task Priority</td>
                 <td>
-                    <select name="Priority">
+                    <select name="Priority" required>
                         <option value="High">High</option>
                         <option value="Medium">Medium</option>
                         <option value="Low">Low</option>
@@ -221,7 +221,7 @@
             <br>
             <tr>
                 <td>Due Date</td>
-                <td><input type="date" name="DueDate" /></td>
+                <td><input type="date" name="DueDate" required/></td>
             </tr>
             <br>
             <br>
