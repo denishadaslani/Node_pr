@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book store details</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        /* Form table */
+        table {
+            background-color: #ffffff;
+            border-collapse: collapse;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        td,
+        th {
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        thead th {
+            background-color: #34495e;
+            color: #ffffff;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="url"],
+        select {
+            width: 95%;
+            padding: 6px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #2980b9;
+        }
+
+        input[type="submit"] {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #219150;
+        }
+
+        /* Books table */
+        center table:last-of-type {
+            margin-top: 20px;
+            width: 90%;
+        }
+
+        img {
+            border-radius: 6px;
+        }
+
+        /* Buttons */
+        button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        a:first-child button {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        a:last-child button {
+            background-color: #3498db;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        hr {
+            margin: 30px 0;
+            border: none;
+            height: 1px;
+            background-color: #ccc;
+        }
+
+        /* Fix book image size in table */
+        td img {
+            width: 120px;
+            /* fixed width */
+            height: 160px;
+            /* fixed height */
+            object-fit: cover;
+            /* crop image without distortion */
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Book store details</h1>
+
+    <center>
+        <form action="/add-book" method="post">
+            <table border="1" cellpadding="10" cellspacing="5">
+                <thead>
+                    <tr>
+                        <td>Book Title</td>
+                        <td><input type="text" name="Booktitle" required></td>
+                    </tr>
+                    <tr>
+                        <td>Author Name</td>
+                        <td><input type="text" name="Authorname" required></td>
+                    </tr>
+                    <tr>
+                        <td>Book Description</td>
+                        <td><input type="text" name="Desc" required></td>
+                    </tr>
+                    <tr>
+                        <td>Book Image</td>
+                        <td><input type="url" name="Image" required></td>
+                    </tr>
+                    <tr>
+                        <td>Book Language</td>
+                        <td>
+                            <select name="Language" id="" required>
+                                <option value="">--Select language --</option>
+                                <option value="English">English</option>
+                                <option value="Gujrati">Gujrati</option>
+                                <option value="Hindi">Hindi</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td><input type="number" name="Price" required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Add Book"></td>
+                    </tr>
+                </thead>
+            </table>
+        </form>
+    </center>
+    <hr>
+    <center>
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>id:</th>
+                    <th>Title</th>
+                    <th>Authorname</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Language</th>
+                    <th>Price</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (books.length===0) { %>
+                    <tr>
+                        <td colspan="9" style="text-align:center; font-weight:bold; color:red;">
+                            No record found
+                        </td>
+                    </tr>
+                    <% } else { %>
+                        <% books.forEach((book,i)=>{ %>
+                            <tr>
+                                <td>
+                                    <%= i+1 %>
+                                </td>
+                                <td>
+                                    <%= book.Booktitle %>
+                                </td>
+                                <td>
+                                    <%= book.Authorname %>
+                                </td>
+                                <td>
+                                    <%= book.Desc %>
+                                </td>
+                                <td>
+                                    <!-- <%= book.Image %> -->
+                                    <img src="<%= book.Image %>" width="200px" alt="">
+                                </td>
+                                <td>
+                                    <%= book.Language%>
+                                </td>
+                                <td>
+                                    <%=book.Price%>
+                                </td>
+                                <td><a href="/Deletebook/<%=book.id%>"><button>Delete</button></a></td>
+                                <td><a href="/Editbook/<%=book.id%>"><button>Edit</button></a></td>
+                            </tr>
+                            <% })%>
+                                <% } %>
+            </tbody>
+        </table>
+    </center>
+
+</body>
+
+</html>

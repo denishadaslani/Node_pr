@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book store details</title>
+    <style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f4f6f9;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 25px;
+    }
+
+    table {
+        background-color: #ffffff;
+        border-collapse: collapse;
+        min-width: 420px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    td {
+        padding: 12px 15px;
+        font-size: 15px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9fafb;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="url"],
+    select {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        font-size: 14px;
+    }
+
+    input:focus,
+    select:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.15);
+    }
+
+    input[type="submit"] {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #2c80b4;
+    }
+
+    center {
+        margin-top: 20px;
+    }
+</style>
+
+</head>
+
+<body>
+    <h1>Edit Book store details</h1>
+
+    <center>
+        <form action="/update-book/<%=book.id%>" method="post">
+            <table border="1" cellpadding="10" cellspacing="5">
+                <thead>
+                    <tr>
+                        <td>Book Title</td>
+                        <td><input type="text" name="Booktitle" value="<%= book.Booktitle %>"></td>
+                    </tr>
+                    <tr>
+                        <td>Author Name</td>
+                        <td><input type="text" name="Authorname" value="<%=book.Authorname%>"></td>
+                    </tr>
+                    <tr>
+                        <td>Book Description</td>
+                        <td><input type="text" name="Desc" value="<%=book.Desc%>"></td>
+                    </tr>
+                    <tr>
+                        <td>Book Image</td>
+                        <td><input type="url" name="Image" value="<%=book.Image%>"></td>
+                    </tr>
+                    <tr>
+                        <td>Book Language</td>
+                        <td>
+                            <select name="Language" id="" value="<%=book.Language%>">
+                                <option value="">--Select language --</option>
+                                <option value="English" " <%= book.Language === " English" ? "selected" : "" %>>English
+                                </option>
+                                <option value="Gujrati" " <%= book.Language === "Gujrati" ? "selected" : "" %>>Gujrati
+                                </option>
+                                <option value="Hindi" " <%= book.Language === "Hindi" ? "selected" : "" %>>Hindi</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td><input type="number" name="Price" value="<%=book.Price%>"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Update Book"></td>
+                    </tr>
+                </thead>
+            </table>
+        </form>
+    </center>
+</body>
+
+</html>
