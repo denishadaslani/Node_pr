@@ -1,0 +1,224 @@
+<%- include('../header') %>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">View Blogs</h4>
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Library</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- <div class="container-fluid"> -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+
+
+        <div class="row mb-3 justify-content-center">
+            <div class="col-md-4">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search by blog title...">
+            </div>
+        </div>
+
+        <div id="noResult" class="text-center text-muted mb-3" style="display:none;">
+            No Record Found
+        </div>
+
+
+        <div class="row">
+
+            <% blog.forEach((item)=> { %>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-4 blog-card"
+                    data-title="<%= item.Title.toLowerCase() %>">
+
+
+
+                    <div class="card h-100 shadow-sm border">
+
+                        <div style="height:220px; overflow:hidden;">
+                            <% if (item.BlogImage) { %>
+                                <img src="<%= item.BlogImage %>" style="width:100%; height:100%; object-fit:cover;">
+                                <% } else { %>
+                                    <div class="d-flex align-items-center justify-content-center h-100 text-muted">
+                                        No Image
+                                    </div>
+                                    <% } %>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="font-weight-bold mb-2">
+                                <%= item.Title %>
+                            </h5>
+
+                            <p class="mb-1"><strong>Category:</strong>
+                                <%= item.Category %>
+                            </p>
+                            <p class="mb-1"><strong>Author:</strong>
+                                <%= item.Name %>
+                            </p>
+                            <p class="mb-1"><strong>Date:</strong>
+                                <%= item.Date %>
+                            </p>
+
+                            <p class="text-muted">
+                                <%= item.Description.substring(0, 90) %>...
+                            </p>
+
+                            <span class="badge badge-primary">
+                                <%= item.Status %>
+                            </span>
+
+                        </div>
+
+                        <div class="card-footer bg-white text-center">
+                            <a href="/blogs/view/<%= item._id %>" class="btn btn-info btn-sm mr-1">View</a>
+                            <a href="/blogs/edit-blog/<%= item._id %>" class="btn btn-success  btn-sm mr-1">Edit</a>
+                            <a href="/blogs/delete-blog/<%= item._id %>" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <% }) %>
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="dist/js/custom.min.js"></script>
+    <!-- this page js -->
+    <script src="assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
+    <script src="assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const blogCards = document.querySelectorAll('.blog-card');
+        const noResult = document.getElementById('noResult');
+
+        searchInput.addEventListener('keyup', function () {
+            const searchValue = this.value.toLowerCase();
+            let visibleCount = 0;
+
+            blogCards.forEach(card => {
+                const title = card.getAttribute('data-title');
+
+                if (title.includes(searchValue)) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Show / hide "No Record Found"
+            if (visibleCount === 0) {
+                noResult.style.display = 'block';
+            } else {
+                noResult.style.display = 'none';
+            }
+
+            // If input empty → show all cards
+            if (searchValue === "") {
+                blogCards.forEach(card => card.style.display = 'block');
+                noResult.style.display = 'none';
+            }
+        });
+    </script>
+
+
+
+    <script>
+        // Basic Example with form
+        var form = $("#example-form");
+        form.validate({
+            errorPlacement: function errorPlacement(error, element) { element.before(error); },
+            rules: {
+                confirm: {
+                    equalTo: "#password"
+                }
+            }
+        });
+        form.children("div").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            onStepChanging: function (event, currentIndex, newIndex) {
+                form.validate().settings.ignore = ":disabled,:hidden";
+                return form.valid();
+            },
+            onFinishing: function (event, currentIndex) {
+                form.validate().settings.ignore = ":disabled";
+                return form.valid();
+            },
+            onFinished: function (event, currentIndex) {
+                alert("Submitted!");
+            }
+        });
+
+
+    </script>
+    <%- include('../footer') %>
+        </body>
+
+        </html>
