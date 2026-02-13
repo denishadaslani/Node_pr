@@ -149,7 +149,7 @@ exports.deletetask = async (req, res) => {
 
 exports.getalltask = async (req, res) => {
     try {
-        let task = await Task.find({  });
+        let task = await Task.find({});
         if (!task) {
             return res.status(StatusCodes.NOT_FOUND).json({ message: "task not found" });
         }
@@ -161,6 +161,3 @@ exports.getalltask = async (req, res) => {
     }
 }
 
-//admin jolly
-
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbmlkIjoiNjk4ZWFkNzkzMzVkOWE4NDBiNzNmOTM2IiwiaWF0IjoxNzcwOTU5MDQxfQ.-NT24pl-H542VBg2gMXm6nuUiD4N8cPhm8fPPS6uUQw

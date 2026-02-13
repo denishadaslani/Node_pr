@@ -37,7 +37,7 @@ exports.userregister = async (req, res) => {
 
 exports.userlogin = async (req, res) => {
     try {
-        let user = await Admin.findOne({ Email: req.body.Email });
+        let user = await User.findOne({ Email: req.body.Email });
         if (!user) {
             return res.status(StatusCodes.NOT_FOUND).json({ message: "user not found" });
         }
